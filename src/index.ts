@@ -12,7 +12,7 @@ middlewares.forEach(middleware => {
 })
 
 app.get("/", (req: Request, res: Response) => {
-    res.send("Hello World!");
+    res.send("Welcome to Pet Store API, go to /docs for documentation");
 })
 
 app.use(mainRouter)

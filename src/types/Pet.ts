@@ -4,7 +4,7 @@ type Pet = {
     name: string;
     dateOfBirth: Date;
     breed: string;
-    photo: string;
+    // photo: string;
 }
 
 export default Pet;

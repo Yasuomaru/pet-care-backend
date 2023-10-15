@@ -4,38 +4,41 @@ import type Pet from "../types/Pet";
 const PetRepository = {
     pets: [] as Pet[],
 
-    create(name: string, dateOfBirth: Date, breed: string, imageBase64: string): Pet {
+    // create(name: string, dateOfBirth: Date, breed: string, imageBase64: string): Pet {
+    create(name: string, dateOfBirth: Date, breed: string): Pet {
         if (!name) {
             throw new Error("Pet name was not provided");
         }
         if (!breed) {
             throw new Error("Pet breed was not provided");
         }
-        if (!imageBase64) {
-            throw new Error("Pet image was not provided");
-        }
-        if (!imageBase64.startsWith("data:image/")) {
-            throw new Error("Pet image was not provided as a base64 string");
-        }
+        // if (!imageBase64) {
+        //     throw new Error("Pet image was not provided");
+        // }
+        // if (!imageBase64.startsWith("data:image/")) {
+        //     throw new Error("Pet image was not provided as a base64 string");
+        // }
 
-        const pet = createPet(name, dateOfBirth, breed, imageBase64);
+        // const pet = createPet(name, dateOfBirth, breed, imageBase64);
+        const pet = createPet(name, dateOfBirth, breed);
         this.pets.push(pet);
         return pet;
     },
 
-    update(id: string, name: string, dateOfBirth: Date, breed: string, imageBase64: string): Pet {
+    // update(id: string, name: string, dateOfBirth: Date, breed: string, imageBase64: string): Pet {
+    update(id: string, name: string, dateOfBirth: Date, breed: string): Pet {
         if (!name) {
             throw new Error("Pet name was not provided");
         }
         if (!breed) {
             throw new Error("Pet breed was not provided");
         }
-        if (!imageBase64) {
-            throw new Error("Pet image was not provided");
-        }
-        if (!imageBase64.startsWith("data:image/")) {
-            throw new Error("Pet image was not provided as a base64 string");
-        }
+        // if (!imageBase64) {
+        //     throw new Error("Pet image was not provided");
+        // }
+        // if (!imageBase64.startsWith("data:image/")) {
+        //     throw new Error("Pet image was not provided as a base64 string");
+        // }
 
         const pet = this.getById(id);
         if (!pet) {
@@ -45,7 +48,7 @@ const PetRepository = {
         pet.name = name;
         pet.dateOfBirth = dateOfBirth;
         pet.breed = breed;
-        pet.photo = imageBase64;
+        // pet.photo = imageBase64;
 
         return pet;
     },

@@ -1,0 +1,125 @@
+openapi: 3.0.0
+info:
+  title: Pet Care API
+  version: 1.0.0
+servers:
+  - url: http://localhost:8000
+paths:
+  /api/pets:
+    post:
+      tags:
+        - default
+      summary: Create Pet
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: "Bobby"
+                dateOfBirth:
+                  type: string
+                  format: date
+                  example: "2019-01-01"
+                breed:
+                  type: string
+                  example: "Bulldog"
+                photo:
+                  type: string
+                  format: byte
+                  example: "base64_encoded_image_data"
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                petId: "6bb5f6ed-1dad-4806-903c-81bd1ecbaa0c"
+                message: "Pet created successfully"
+    get:
+      tags:
+        - default
+      summary: Get Pets
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                pets:
+                  - petId: "6bb5f6ed-1dad-4806-903c-81bd1ecbaa0c"
+                    name: "Bobby"
+                    dateOfBirth: "2019-01-01"
+                    breed: "Bulldog"
+                    photo: "base64_encoded_image_data"
+  /api/pets/{petId}:
+    parameters:
+      - name: petId
+        in: path
+        required: true
+        schema:
+          type: string
+          example: "6bb5f6ed-1dad-4806-903c-81bd1ecbaa0c"
+    put:
+      tags:
+        - default
+      summary: Create Pet Copy
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: "Bobby"
+                dateOfBirth:
+                  type: string
+                  format: date
+                  example: "2019-01-01"
+                breed:
+                  type: string
+                  example: "Bulldog"
+                photo:
+                  type: string
+                  format: byte
+                  example: "base64_encoded_image_data"
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                petId: "6bb5f6ed-1dad-4806-903c-81bd1ecbaa0c"
+                message: "Pet copy created successfully"
+    get:
+      tags:
+        - default
+      summary: Get Pet by ID
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                petId: "6bb5f6ed-1dad-4806-903c-81bd1ecbaa0c"
+                name: "Bobby"
+                dateOfBirth: "2019-01-01"
+                breed: "Bulldog"
+                photo: "base64_encoded_image_data"
+    delete:
+      tags:
+        - default
+      summary: Delete Pet by ID
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                petId: "6bb5f6ed-1dad-4806-903c-81bd1ecbaa0c"
+                message: "Pet deleted successfully"
